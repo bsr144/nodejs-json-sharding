@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package correct_employee;
+
+service CorrectEmployeeService {
+  rpc ListEmployee (GetCorrectEmployeesRequest) returns (CorrectEmployeesListResponse) {}
+}
+
+message GetCorrectEmployeesRequest {
+  string name = 1;
+}
+
+message EmployeeResponse {
+  string id = 1;
+  string name = 2;
+  string managerId = 3;
+  ManagerDetails manager = 4;
+}
+
+message ManagerDetails {
+  string id = 1;
+  string name = 2;
+  string managerId = 3;
+  ManagerDetails manager = 4;
+}
+
+message CorrectEmployeesListResponse {
+  repeated EmployeeResponse employees = 1;
+}
